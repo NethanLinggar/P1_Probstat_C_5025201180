@@ -143,7 +143,7 @@ hist(rpois(365, bayi), main = "Histogram Poisson")
 ### Poin D
 > Nilai Rataan (μ) dan Varian (σ²) dari Distribusi Poisson.
 
-Rataan dan varian yang ada sudah sesuai dengan lambda pada soal, yaitu rata-rata historis bayi lahir.
+Rataan dan varian sesuai dengan lambda pada soal, yaitu rata-rata historis bayi lahir.
 
 ```R
 rataan = varian = bayi
@@ -255,4 +255,76 @@ varian
 <br>
 
 ## Soal 6
-WIP
+Soal ini dikerjakan menggunakan Distribusi Normal.
+> Diketahui generate random nilai sebanyak 100 data, mean = 50, sd = 8.
+
+### Poin A
+> Fungsi Probabilitas dari Distribusi Normal P(X1 ≤ x ≤ X2), hitung Z-Score Nya dan plot data generate randomnya dalam bentuk grafik.
+
+Berikut cara mendapatkan Z-Score, dimana didapatkan Z(X1)=0.04984494 dan Z(X2)=0.04959739.
+
+```R
+#A
+rata = mean(x)
+x1 = floor(mean(x))
+x2 = ceiling(mean(x))
+
+z <- function(input){
+  return ((1 / (sd * sqrt(2*22/7))) * exp(1) ^ (-0.5 * ((input - rata) / sd) ^ 2))
+}
+
+z(x1)
+z(x2)
+```
+![](screenshots/6a.jpg)
+
+Dan berikut cara mendapatkan plot diagram dari data randomnya.
+Pertama dibuat pola standar pada x. Lalu dibagi menjadi ganjil dan genap, dan angka-angka genap kemudian dibuat descending. Setelah itu hasilnya digabung.
+
+```R
+sortedx = sort(x, decreasing = FALSE)
+i = l = odd = even = 0
+j = k = 1
+
+for(i in 1:100){
+  if (i %% 2== 0){
+    even[j] <- (sortedx[i])
+    j <- j + 1
+  }
+  else{
+    odd[k] <- (sortedx[i])
+    k <- k + 1
+  }
+}
+
+combined = even
+flipped_odd = sort(odd, decreasing = TRUE)
+
+for(l in 1:50){
+  combined[50 + l] <- flipped_odd[l]
+}
+
+plot(combined)
+```
+![](screenshots/6a1.jpg)
+
+### Poin B
+> Generate Histogram dari Distribusi Normal dengan breaks 50 dan format penamaan: NRP_Nama_Probstat_{Nama Kelas}_DNhistogram
+
+Menggunakan fungsi hist() untuk menghasilkan histogram dari x dengan format penamaan dan breaks yang ditentukan.
+
+```R
+hist(x, main = "5025201180_NethaneelPL_Probstat_C_DNhistogram", breaks = 50)
+```
+![](screenshots/6b.jpg)
+
+### Poin C
+> Nilai Varian (σ²) dari hasil generate random nilai Distribusi Normal.
+
+Varian ditemukan dengan mencari nilai dari standar deviasi dipangkatkan dua.
+
+```R
+varian = sd ^ 2
+varian
+```
+![](screenshots/6c.jpg)
