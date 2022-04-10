@@ -12,7 +12,9 @@ Soal ini dikerjakan menggunakan Distribusi Geometrik.
 
 ### Poin A
 > Peluang penyurvei bertemu x = 3 orang yang tidak menghadiri acara vaksinasi sebelum keberhasilan pertama ketika p = 0,20 dari populasi menghadiri acara vaksinasi.
+
 Menggunakan fungsi bawaan dgeom(). Didapatkan hasil 0.1024.
+
 ```R
 #A
 p = 0.2
@@ -24,7 +26,9 @@ P
 
 ### Poin B
 > Mean Distribusi Geometrik dengan 10000 data random , prob = 0,20 dimana distribusi geometrik acak tersebut X = 3 (distribusi geometrik acak () == 3).
-Mencari mean menggunakan mean() pada rgeom() untuk mendapatkan data acak. Hasil yang didapatkan pada saat itu dalah 0.1035. 
+
+Mencari mean menggunakan mean() pada rgeom() untuk mendapatkan data acak. Hasil yang didapatkan pada saat itu adalah 0.1035. 
+
 ```R
 #B
 mean = mean(rgeom(n = 10000, prob = p) == 3)
@@ -34,17 +38,21 @@ mean
 
 ### Poin D
 > Histogram Distribusi Geometrik, peluang X = 3 gagal sebelum sukses pertama.
+
 Menggunakan fungsi hist() untuk menghasilkan histogram dari fungsi rgeom().
+
 ```R
 #D
 n = 10000
 hist(rgeom(n, prob = p), main = 'Histogram Geometrik')
 ```
-![1d](screenshots\1d.jpg)
+![1d](screenshots/1d.jpg)
 
 ### Poin E
 > Nilai Rataan (μ) dan Varian (σ²) dari Distribusi Geometrik.
+
 Rataan dan varian dicari menggunakan formula yang sudah ada. Hasil yang didapatkan adalah μ=5 dan σ²=20.
+
 ```R
 #E
 rataan = 1 / p
@@ -66,7 +74,9 @@ p_sembuh = 0.2
 
 ### Poin A
 > Peluang terdapat 4 pasien yang sembuh.
+
 Menggunakan fungsi bawaan dbinom(). Didapatkan hasil 0.2181994.
+
 ```R
 #A
 peluang = dbinom(4, pasien, prob = p_sembuh, log = FALSE)
@@ -76,7 +86,9 @@ peluang
 
 ### Poin B
 > Gambarkan grafik histogram berdasarkan kasus tersebut.
+
 Menggunakan fungsi hist() untuk menghasilkan histogram dari fungsi rbinom(). Digunakan rbinom() supaya mendapatkan data yang random.
+
 ```R
 hist(rbinom(4, pasien, prob = p_sembuh), ylab = "Frekuensi", main = "Histogram Binomial")
 ```
@@ -84,7 +96,9 @@ hist(rbinom(4, pasien, prob = p_sembuh), ylab = "Frekuensi", main = "Histogram B
 
 ### Poin C
 > Nilai Rataan (μ) dan Varian (σ²) dari Distribusi Binomial.
+
 Rataan dan varian dicari menggunakan formula yang sudah ada. Hasil yang didapatkan adalah μ=4 dan σ²=3.2.
+
 ```R
 #C
 rataan = pasien * (prob = p_sembuh)
@@ -104,7 +118,9 @@ bayi = 4.5
 
 ### Poin A
 > Peluang bahwa 6 bayi akan lahir di rumah sakit ini besok.
+
 Menggunakan fungsi bawaan dpois(). Didapatkan hasil 0.1281201.
+
 ```R
 #A
 b_lahir = 6
@@ -115,7 +131,9 @@ peluang
 
 ### Poin B
 > Histogram kelahiran 6 bayi akan lahir di rumah sakit ini selama setahun (n = 365).
+
 Menggunakan fungsi hist() untuk menghasilkan histogram dari fungsi rpois() dengan n=365. Digunakan rpois() supaya mendapatkan data yang random.
+
 ```R
 #B
 hist(rpois(365, bayi), main = "Histogram Poisson")
@@ -124,7 +142,9 @@ hist(rpois(365, bayi), main = "Histogram Poisson")
 
 ### Poin D
 > Nilai Rataan (μ) dan Varian (σ²) dari Distribusi Poisson.
+
 Rataan dan varian yang ada sudah sesuai dengan lambda pada soal, yaitu rata-rata historis bayi lahir.
+
 ```R
 rataan = varian = bayi
 rataan
@@ -144,7 +164,9 @@ v = 10
 
 ### Poin A
 > Fungsi Probabilitas dari Distribusi Chi-Square.
+
 Menggunakan fungsi bawaan dchisq(). Didapatkan hasil 0.007664155.
+
 ```R
 #A
 probabilitas = dchisq(x, 10)
@@ -154,7 +176,9 @@ probabilitas
 
 ### Poin B
 > Histogram dari Distribusi Chi-Square dengan 100 data random.
+
 Menggunakan fungsi hist() untuk menghasilkan histogram dari fungsi rchisq(). Digunakan rchisq() supaya mendapatkan data yang random. x-axis disini menggambarkan X dan y-axis disini menggambarkan V.
+
 ```R
 #B
 hist(rchisq(100, v), xlab = "X", ylab = "V", main = "Histogram Chi-Square")
@@ -163,7 +187,9 @@ hist(rchisq(100, v), xlab = "X", ylab = "V", main = "Histogram Chi-Square")
 
 ### Poin C
 > Nilai Rataan (μ) dan Varian (σ²) dari Distribusi Chi-Square
+
 Rataan dan varian dicari menggunakan formula yang sudah ada. Hasil yang didapatkan adalah μ=10 dan σ²=20.
+
 ```R
 #C
 rataan = v
@@ -184,7 +210,9 @@ set.seed(1)
 
 ### Poin A
 > Fungsi Probabilitas dari Distribusi Exponensial
+
 Menggunakan fungsi bawaan dexp(). Didapatkan hasil 0.1493612.
+
 ```R
 #A
 probability = dexp(1, rate = lamb)
@@ -194,7 +222,9 @@ probability
 
 ### Poin B
 > Histogram dari Distribusi Exponensial untuk 10, 100, 1000 dan 10000 bilangan random
+
 Menggunakan fungsi hist() untuk menghasilkan histogram dari fungsi rexp(). Digunakan rexp() supaya mendapatkan data yang random dan pada jumlah data yang berbeda-beda.
+
 ```R
 #B
 hist(rexp(10, rate = lamb), main = "Histogram Eksponensial (10 Bilangan Random)")
@@ -209,7 +239,9 @@ hist(rexp(10000, rate = lamb), main = "Histogram Eksponensial (10000 Bilangan Ra
 
 ### Poin C
 > Nilai Rataan (μ) dan Varian (σ²) dari Distribusi Exponensial untuk n = 100 dan λ = 3
+
 Rataan dan varian dicari menggunakan formula yang sudah ada dengan n=100 dan λ=3. Hasil yang didapatkan adalah μ=0.3675159 dan σ²=0.09725574.
+
 ```R
 #C
 n = 100
